@@ -144,5 +144,11 @@ async def tic(ctx: commands.Context):
     """Starts a tic-tac-toe game with yourself."""
     await ctx.send('Tic Tac Toe: X goes first', view=TicTacToe())
 
+import os
 
-bot.run('token')
+token = os.getenv("DISCORD_TOKEN")
+
+if token is None:
+    raise RuntimeError("DISCORD_TOKEN is not set")
+
+bot.run(token)
